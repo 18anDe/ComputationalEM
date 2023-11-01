@@ -27,8 +27,16 @@ end
 
 coeff = Z\(ones(length(Z),1));
 
+coeff_plot = reshape(coeff,noOfSeg,noOfSeg);
+fig1 = figure();
+surf(coeff_plot);
+
 for m = 1:sqrt(length(coeff))
     coeff_diag(m) = coeff(noOfSeg*(m-1)+m,1);
 end
 
-plot(0:length(coeff_diag)-1,(coeff_diag)*1e12,'LineWidth',1.4);
+fig2 = figure();
+plot(basisPoint_midpoint(1:length(basisPoint_midpoint)),(coeff_diag)*1e12,'LineWidth',1.4);
+xlabel('Length across the plate (m)','FontSize',12);
+ylabel('Charge density (pC/m^2)','FontSize',12);
+title('Charge density on a square plate (diagonal)','FontSize',14);
