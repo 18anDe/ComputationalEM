@@ -29,9 +29,9 @@ coeff = Z\(ones(length(Z),1));
 
 coeff_plot = reshape(coeff,noOfSeg,noOfSeg);
 fig1 = figure();
-surf(coeff_plot);
+surf(coeff_plot*1e12);
 
-for m = 1:sqrt(length(coeff))
+for m = 1:noOfSeg
     coeff_diag(m) = coeff(noOfSeg*(m-1)+m,1);
 end
 
