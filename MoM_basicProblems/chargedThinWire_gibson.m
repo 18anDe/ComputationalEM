@@ -3,14 +3,15 @@ wireLength = 1;
 noOfSeg = 100;
 noOfBasisPoints = noOfSeg+1;
 basisPoint = linspace(0,1,noOfBasisPoints);
-a = 0.001;      %wire radius
+a = 0.001;            %wire radius
+subPoints = 5;        %Even number gives assymetric result
 delta = basisPoint(2)-basisPoint(1);
 eps0 = 8.854e-12;
 
 Z = zeros;
 for m = 2:length(basisPoint)-1
     for n = 2:length(basisPoint)-1
-        tempArray = linspace(basisPoint(n)-delta/2,basisPoint(n)+delta/2,5);
+        tempArray = linspace(basisPoint(n)-delta/2,basisPoint(n)+delta/2,subPoints);
         Z(m,n) = simp((1./sqrt(a^2 + (basisPoint(m)-tempArray).^2)).',tempArray(2)-tempArray(1));
     end
 end
